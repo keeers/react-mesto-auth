@@ -1,0 +1,11 @@
+.header__exit{
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .header__exit {
+        margin-right: 24px;
+        margin-top: 5px;
+    }
+}

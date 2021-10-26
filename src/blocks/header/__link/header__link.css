@@ -1,0 +1,9 @@
+.header__link{
+    align-self: center;
+}
+
+@media screen and (max-width: 750px) {
+    .header__link {
+        margin-right: 30px;
+    }
+}

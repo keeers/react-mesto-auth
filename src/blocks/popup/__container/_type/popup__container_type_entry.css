@@ -1,0 +1,9 @@
+.popup__container_type_entry{
+    width: 280px;
+}
+
+@media screen and (min-width: 750px) {
+    .popup__container_type_entry{
+        width: 430px;
+    }
+}

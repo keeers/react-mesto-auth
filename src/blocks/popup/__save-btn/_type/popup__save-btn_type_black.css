@@ -1,0 +1,15 @@
+.popup__save-btn_type_black{
+    background: white;
+    color: black;
+    margin: 0;
+    margin-top: 216px;
+}
+
+@media screen and (max-width: 750px) {
+    .popup__save-btn_type_black {
+        width: 260px;
+        font-size: 16px;
+        line-height: 19px;
+        margin-top: 173px;
+    }
+}

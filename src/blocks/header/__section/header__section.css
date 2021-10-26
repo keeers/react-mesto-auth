@@ -1,0 +1,14 @@
+.header__section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin-bottom: 41px;
+}
+
+@media screen and (max-width: 750px) {
+    .header__section{
+        margin-left: 27px;
+        margin-bottom: 32px;
+    }
+}
