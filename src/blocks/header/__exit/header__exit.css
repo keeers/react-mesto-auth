@@ -1,11 +1,12 @@
-.header__exit{
-    margin: 0;
-    padding: 0;
+.header__exit {
+        display: block;
+        margin: 0;
+        padding: 0;
+        color: #A9A9A9;
 }
 
 @media screen and (max-width: 750px) {
-    .header__exit {
-        margin-right: 24px;
-        margin-top: 5px;
+    .header__exit{
+        display: none;
     }
 }

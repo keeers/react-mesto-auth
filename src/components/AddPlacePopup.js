@@ -22,7 +22,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         setCardName(target.value);
         targetValidity ? setInputNameValid(true) : setInputNameValid(false);
         targetValidity ? setInputNameValidationMessage('') : setInputNameValidationMessage(target.validationMessage);
-    }
+    };
 
     function handleLinkChange(e) {
         const target = e.target;
@@ -30,7 +30,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         setCardLink(target.value);
         targetValidity ? setInputLinkValid(true) : setInputLinkValid(false);
         targetValidity ? setInputLinkValidationMessage('') : setInputLinkValidationMessage(target.validationMessage);
-    }
+    };
 
     React.useEffect(() => {
         inputLinkValid && inputNameValid ? setInputsValid(true) : setInputsValid(false);

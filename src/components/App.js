@@ -27,7 +27,7 @@ function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = React.useState(false);
   const [infoToolTipMessage, setInfoToolMessage] = React.useState('');
-  const [infoToolTipType, setInfoToolTip] = React.useState(false);
+  const [infoToolTipType, setInfoToolTipType] = React.useState(false);
   const [infoToolTipImage, setInfoToolTipImage] = React.useState(failImage);
   const [selectedCard, setSelectedCard] = React.useState({ cardLink: '', cardName: '' });
   const [currentUser, setCurrentUser] = React.useState({});
@@ -44,7 +44,8 @@ function App() {
     }).catch(err => {
       setIsInfoToolTipOpen(true);
       setInfoToolMessage('Что-то пошло не так! Попробуйте еще раз.');
-      setInfoToolTip(false);
+      setInfoToolTipType(false);
+      setInfoToolTipImage(failImage);
       console.log(err)
     });
   };
@@ -56,16 +57,15 @@ function App() {
 
   function handleRegister(password, email) {
     auth.register(password, email).then(() => {
-      setIsInfoToolTipOpen(true);
       setInfoToolMessage('Вы успешно зарегистрировались!');
-      setInfoToolTip(true);
+      setInfoToolTipType(true);
       setInfoToolTipImage(successImage);
     }).catch(err => {
-      setIsInfoToolTipOpen(true);
       setInfoToolMessage('Что-то пошло не так! Попробуйте еще раз.');
-      setInfoToolTip(false);
+      setInfoToolTipType(false);
+      setInfoToolTipImage(failImage);
       console.log(err)
-    });
+    }).finally(() => setIsInfoToolTipOpen(true));
   };
 
   function tokenCheck() {
@@ -74,7 +74,7 @@ function App() {
       auth.getContent(jwt).then(({ data }) => {
         setUserEmail(data.email);
         setLoggedIn(true);
-      })
+      }).catch(err => console.log(err));
     };
   };
 
@@ -155,11 +155,31 @@ function App() {
         setCurrentUser(data)
         setCards(initialCards);
       }).catch(err => console.log(err));
-  }, [])
+  }, []);
 
   React.useEffect(() => {
     tokenCheck();
-  }, [loggedIn])
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    };
+    document.addEventListener('keydown', closeByEscape);
+    return () => document.removeEventListener('keydown', closeByEscape)
+  }, []);
+
+  React.useEffect(() => {
+    const closeOnClick = (e) => {
+      if (e.target.classList.contains('popup')) {
+        closeAllPopups();
+      }
+    };
+    document.addEventListener('click', closeOnClick);
+    return () => document.removeEventListener('click', closeOnClick)
+  }, []);
 
   return (
     <div className="page">
