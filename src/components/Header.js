@@ -4,13 +4,7 @@ import headerLogo from '../images/header__logo.svg';
 import headerMenu from '../images/header__menu.svg';
 import headerClose from '../images/close__button_s.svg'
 
-const Header = ({ type, text, loggedIn, onLogout }) => {
-
-    const [isClicked, setIsClicked] = React.useState(false);
-
-    function handleClick() {
-        setIsClicked(!isClicked);
-    };
+const Header = ({ type, text, loggedIn, onLogout, onClick, isClicked }) => {
 
     return (
         <header className="header">
@@ -28,7 +22,7 @@ const Header = ({ type, text, loggedIn, onLogout }) => {
 
                 {loggedIn &&
                     <div className="header__logout">
-                        <button className="header__button" onClick={handleClick}><img src={isClicked ? headerClose : headerMenu} alt="Развернуть меню" /> </button>
+                        <button className="header__button" onClick={onClick}><img src={isClicked ? headerClose : headerMenu} alt="Развернуть меню" /> </button>
                         <p className="header__email">{text}</p>
                         <p onClick={onLogout} className="header__exit link">Выйти</p>
                     </div>

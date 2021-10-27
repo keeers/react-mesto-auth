@@ -35,7 +35,7 @@ function App() {
   const [deletingCardId, setDeletingCardId] = React.useState('');
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState('');
-
+  const [isMenuClicked, setIsMenuClicked] = React.useState(false);
 
   function handleLogin(password, email) {
     auth.authorize(password, email).then((data) => {
@@ -139,6 +139,10 @@ function App() {
     }).catch(err => console.log(err));
   };
 
+  function handleMenuClick() {
+    setIsMenuClicked(!isMenuClicked);
+  };
+
   function closeAllPopups() {
     setIsAddPlacePopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -183,7 +187,7 @@ function App() {
 
   return (
     <div className="page">
-      {loggedIn && <Header text={userEmail} loggedIn={loggedIn} onLogout={handleLogout} />}
+      {loggedIn && <Header text={userEmail} loggedIn={loggedIn} onLogout={handleLogout} onClick={handleMenuClick} isClicked={isMenuClicked} />}
       <CurrentUserContext.Provider value={currentUser}>
         <ProtectedRoute path='/' loggedIn={loggedIn} component={Main} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onDeleteCard={handleDeleteCardClick} onCardClick={handleCardClick} initialCards={initialCards} onCardLike={handleCardLike} />
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
