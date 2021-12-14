@@ -43,7 +43,7 @@ function App() {
       setLoggedIn(true);
     }).catch(err => {
       setIsInfoToolTipOpen(true);
-      setInfoToolMessage('Что-то пошло не так! Попробуйте еще раз.');
+      setInfoToolMessage('Что-то пошло не так! Попробуйте еще раз');
       setInfoToolTipType(false);
       setInfoToolTipImage(failImage);
       console.log(err)
