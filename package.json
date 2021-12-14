@@ -1,6 +1,6 @@
 {
   "name": "mesto-react",
-  "homepage": "https://keeers.github.io/mesto-react-auth",
+  "homepage": "https://github.com/keeers/react-mesto-auth",
   "version": "0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
